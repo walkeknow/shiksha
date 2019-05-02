@@ -1,1 +1,1 @@
-web: gunicorn shiksha.wsgi
+web: gunicorn Shiksha.wsgi
