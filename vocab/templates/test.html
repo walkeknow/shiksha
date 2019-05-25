@@ -2,7 +2,43 @@
 
 {% block head %}
     <title>Test {{ test|capfirst }}</title>
+    <!-- Custom styles for this template -->
+    {% load static %}
+    <link href="{% static 'css/card.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
+    <div id="lecture"></div>
+    <div class="container">
+        <div class="container">
+            <div class="effect" onclick="flip()">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="front">
+                            <span class="word-style">
+                                <span id="card-heading">
+                                    HEADING
+                                </span>
+                            </span>
+                        </div>
+                        <div class="back">
+                            <span class="heading-style">Meaning</span>
+                            <br>
+                            <span class="heading-style">Synonyms</span>
+                            <ul>
+                                {% for word in words %}
+                                    <li>{{ word }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function flip() {
+            $('.card').toggleClass('flipped');
+        }
+    </script>
 {% endblock %}
