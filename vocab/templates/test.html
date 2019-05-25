@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test</title>
-</head>
-<body>
-    {{ test }}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Test {{ test|capfirst }}</title>
+{% endblock %}
+
+{% block body %}
+{% endblock %}
