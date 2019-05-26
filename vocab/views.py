@@ -3,7 +3,7 @@ import os
 from django.conf import settings
 import urllib.parse
 import requests
-import re
+import random
 
 
 # Create your views here.
@@ -35,7 +35,9 @@ def test(request, test_id):
         print(synonyms)
         print(antonyms)
     word_file = open(os.path.join(settings.BASE_DIR, 'staticfiles/' + 'temp.txt'))
-    word_list = word_file.read().splitlines()
+    lower_word_list = word_file.read().splitlines()
+    word_list = [word.capitalize() for word in lower_word_list]
+    random.shuffle(word_list)
     print(word_list)
     context = {
         "test": test_id,

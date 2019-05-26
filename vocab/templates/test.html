@@ -4,11 +4,39 @@
     <title>Test {{ test|capfirst }}</title>
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="{% static 'css/card.css?v=34' %}" rel="stylesheet">
+    <link href="{% static 'css/card.css?v=132' %}" rel="stylesheet">
+    <script>
+
+    </script>
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-light d-none d-md-block">
+        <div class="container">
+            {% load static %}
+            <a href="{% url 'vocab:index' %}"><img src="{% static 'images/logo.png' %}" type="image/png"></a>
+            <a class="navbar-brand" href="{% url 'vocab:index' %}">Shiksha</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'vocab:index' %}#lecture">
+                            <span>Lecture Tests</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'vocab:index' %}#session">
+                            <span>Session Tests</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="d-block d-md-none navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-light">
         <div class="container">
             <a class="navbar-brand" href="{% url 'vocab:index' %}">Shiksha</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -42,9 +70,9 @@
                     <div class="effect d-none d-md-block" onclick="flip()">
                         <div class="card-container">
                             <div class="card">
-                                <div class="front my-primary" style="padding-top: 20%;">
-                            <span class="word-style">
-                                OSTENTATIOUS
+                                <div class="front bg-info" style="padding-top: 20%;">
+                            <span id="front-pc" class="word-style">
+                                ewatcwvwe
                             </span>
                                 </div>
                                 <div class="back my-secondary">
@@ -56,9 +84,9 @@
                                     <br>
                                     <span class="heading-style">Synonyms</span>
                                     <ul>
-                                        {% for word in words %}
-                                            <span class="text-style"><li>{{ word }}</li></span>
-                                        {% endfor %}
+{#                                        {% for word in words %}#}
+{#                                            <span class="text-style"><li>{{ word }}</li></span>#}
+{#                                        {% endfor %}#}
                                     </ul>
                                 </div>
                             </div>
@@ -68,9 +96,9 @@
                     <div class="effect d-block d-md-none mx-3 mb-4" style="height: 450px" onclick="flip()">
                         <div class="card-container">
                             <div class="card">
-                                <div class="front my-primary">
-                            <span class="word-style">
-                                OSTENTATIOUS
+                                <div class="front bg-info">
+                            <span id="front-mobile" class="word-style">
+                                we fg gg44 g
                             </span>
                                 </div>
                                 <div class="back my-secondary">
@@ -82,9 +110,9 @@
                                     <br>
                                     <span class="heading-style">Synonyms</span>
                                     <ul>
-                                        {% for word in words %}
-                                            <span class="text-style"><li>{{ word }}</li></span>
-                                        {% endfor %}
+{#                                        {% for word in words %}#}
+{#                                            <span class="text-style"><li>{{ word }}</li></span>#}
+{#                                        {% endfor %}#}
                                     </ul>
                                 </div>
                             </div>
@@ -106,7 +134,7 @@
                         {% load static %}
                         <a href="https://www.dictionary.com/browse/abstain#wordOrigin">
                             <img src="{% static 'images/dictionary.png' %}" alt="dictionary.com meaning"
-                                 class="img-thumbnail" title="Word Origin from Dictionary.com">
+                                 class="img-thumbnail" title="Word Origin and Examples from Dictionary.com">
                         </a>
                     </div>
                     <div class="row mt-3 justify-content-center d-flex d-md-none">
@@ -119,9 +147,24 @@
             </div>
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
         function flip() {
             $('.card').toggleClass('flipped');
+        }
+        window.onload = function() {
+            let counter = 1;
+            let words = {{ words|safe }};
+            console.log(words[0]);
+            $('#front-pc').text(counter.toString()+"."+words[0]);
+            $('#front-mobile').text(counter.toString()+"."+words[0]);
+            $('.btn-success').click(function () {
+                $('#front-pc').text("new");
+                $('#front-mobile').text(words[1]);
+            });
+            $('.btn-success').click(function () {
+                $('#front-pc').text("new");
+                $('#front-mobile').text(words[1]);
+            })
         }
     </script>
 {% endblock %}
