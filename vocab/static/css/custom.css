@@ -75,7 +75,7 @@ a {
 }
 
 footer {
-  clear: both;
-  position: relative;
-  margin-top: 120px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
