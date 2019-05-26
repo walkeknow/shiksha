@@ -4,14 +4,12 @@
     <title>Test {{ test|capfirst }}</title>
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="{% static 'css/card.css?v=3.3.3' %}" rel="stylesheet">
+    <link href="{% static 'css/card.css?v=2.4.5' %}" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-light">
         <div class="container">
-            {% load static %}
-            <a href="{% url 'vocab:index' %}"><img src="{% static 'images/logo.png' %}" type="image/png"></a>
             <a class="navbar-brand" href="{% url 'vocab:index' %}">Shiksha</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,8 +34,8 @@
 {% endblock %}
 
 {% block body %}
-    <div id="lecture"></div>
-    <div class="container">
+    <div id="lecture" class="d-none d-md-block"></div>
+    <div class="container mt-2">
         <div class="container">
             <div class="row">
                 <div class="col mx-auto">
@@ -67,7 +65,7 @@
                         </div>
                         {% comment %}for mobile view{% endcomment %}
                         <div class="card-container d-block d-md-none">
-                            <div class="card" style="height: 90%">
+                            <div class="card" style="height: 95%">
                                 <div class="front my-primary">
                             <span class="word-style">
                                 OSTENTATIOUS
@@ -106,11 +104,8 @@
                                  class="img-thumbnail">
                         </a>
                     </div>
-                    <div class="row justify-content-center d-flex d-md-none">
-                        {% load static %}
-                        <a href="https://www.dictionary.com/browse/abstain">
-                            <img src="{% static 'images/dictionary.png' %}" alt="dictionary.com meaning"
-                                 class="img-thumbnail" style="transform: scale(0.5)">
+                    <div class="row mt-3 justify-content-center d-flex d-md-none">
+                        <a href="https://www.dictionary.com/browse/abstain#examples" role="button" class="btn butn-lg btn-outline-info py-3">Examples in Dictionary.com
                         </a>
                     </div>
                 </div>
@@ -122,4 +117,13 @@
             $('.card').toggleClass('flipped');
         }
     </script>
+{% endblock %}
+{% block footer %}
+    <!-- Footer -->
+    <footer class="py-5 bg-dark d-none d-md-block">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Kewal Shah 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
 {% endblock %}
