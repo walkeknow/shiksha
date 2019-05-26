@@ -4,7 +4,7 @@
     <title>Test {{ test|capfirst }}</title>
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="{% static 'css/card.css?v=2.4.5' %}" rel="stylesheet">
+    <link href="{% static 'css/card.css?v=2.4.2' %}" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
@@ -117,13 +117,4 @@
             $('.card').toggleClass('flipped');
         }
     </script>
-{% endblock %}
-{% block footer %}
-    <!-- Footer -->
-    <footer class="py-5 bg-dark d-none d-md-block">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Kewal Shah 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
 {% endblock %}
