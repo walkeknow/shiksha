@@ -3,12 +3,13 @@
 }
 .card-container {
     width: 300px;
-    height: 550px;
+    height: 100%;
     position: relative;
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
     -o-perspective: 800px;
     perspective: 800px;
+    border: none;
 }
 .card {
     width: 100%;
@@ -23,14 +24,14 @@
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform-origin: 50% 50%;
-    pointer-events: none
+    pointer-events: none;
+    border: none;
 }
 .card div {
     display: block;
     height: 100%;
     width: 100%;
     line-height: 260px;
-    color: white;
     text-align: center;
     font-weight: bold;
     font-size: 140px;
@@ -38,10 +39,11 @@
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
+    border: none;
 }
 
 .card .front {
-    padding-top: 30%;
+    padding-top: 10%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: black;
     height: inherit;
@@ -91,6 +93,7 @@
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
     font-size: 0.2em;
     font-weight: bold;
+    margin-top: 50%;
 }
 
 .effect {
