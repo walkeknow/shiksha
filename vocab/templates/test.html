@@ -4,7 +4,7 @@
     <title>Test {{ test|capfirst }}</title>
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="{% static 'css/card.css?v=3.5' %}" rel="stylesheet">
+    <link href="{% static 'css/card.css?v=34' %}" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
@@ -124,7 +124,15 @@
 
 {% block footer %}
     <!-- Footer -->
-    <footer class="py-5 bg-dark" style="float: bottom;">
+    <footer class="py-5 bg-dark d-none d-md-block"
+            style="position: fixed;bottom: 0;width: 100%;">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Kewal Shah 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark d-block d-md-none">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Kewal Shah 2019</p>
         </div>
