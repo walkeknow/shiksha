@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
+{% block head %}
+{% endblock %}
+
 {% block body %}
     <!-- Page Content -->
     <a id="lecture"></a>
     <div class="container">
         <div class="mt-5">
             <h1 class="jumbotron-fluid">Vocabulary Tests</h1>
-            <h4 class="text-info">(200 TOP GRE WORDS)</h4>
+            <h4 class="my-secondary-font">(200 TOP GRE WORDS)</h4>
         </div>
         <!-- Content Row -->
         <div class="row mt-5">
             <div class="col-md-4 mb-5">
-                <div id="t1" class="card bg-primary text-white text-center" onclick="">
+                <div id="t1" class="card my-primary text-white text-center" onclick="">
                     <div class="card-header">
                         Test 1
                     </div>
@@ -33,7 +36,7 @@
             </div>
             <!-- /.col-md-4 -->
             <div class="col-md-4 mb-5">
-                <div id="t3" class="card bg-primary text-white text-center">
+                <div id="t3" class="card my-primary text-white text-center">
                     <div class="card-header">
                         Test 3
                     </div>
@@ -57,7 +60,7 @@
             </div>
             <!-- /.col-md-4 -->
             <div class="col-md-4 mb-5">
-                <div id="t5" class="card bg-primary text-white text-center">
+                <div id="t5" class="card my-primary text-white text-center">
                     <div class="card-header">
                         Test 5
                     </div>
@@ -90,8 +93,9 @@
                     </div>
                 </div>
             </div>
+            {% comment %}for mobile view{% endcomment %}
             <div class="col-md-4 mb-5 mx-auto d-block d-md-none">
-                <div id="t7" class="card bg-primary text-white text-center">
+                <div id="t7" class="card my-primary text-white text-center">
                     <div class="card-header">
                         Test 7
                     </div>
@@ -107,12 +111,12 @@
         <a id="session"></a>
         <div class="mt-5">
             <h1 class="jumbotron-fluid">Session Tests</h1>
-            <h4 class="text-info">(Based on "Word Power Made Easy")</h4>
+            <h4 class="my-secondary-font">(Based on "Word Power Made Easy")</h4>
         </div>
         <!-- Content Row -->
         <div class="row mt-5">
             <div class="col-md-3 mb-5">
-                <div id="b1"  class="card bg-primary text-white text-center" onclick="">
+                <div id="b1"  class="card my-primary text-white text-center" onclick="">
                     <div class="card-header">
                         B-1
                     </div>

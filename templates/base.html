@@ -14,7 +14,7 @@
 
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css?v=1.5.0' %}" rel="stylesheet">
 
     <!-- Site Icons -->
     {% load static %}
@@ -29,36 +29,33 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        {% load static %}
-        <a href="{% url 'vocab:index' %}"><img src="{% static 'images/logo.png' %}" type="image/png"></a>
-        <a class="navbar-brand" href="{% url 'vocab:index' %}">Shiksha</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#lecture">
-                        <span>Lecture Tests</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#session">
-                        <span>Session Tests</span>
-                    </a>
-                </li>
-{#                <li class="nav-item">#}
-{#                    <a class="nav-link" href="#">#}
-{#                        <span>Starred Words</span>#}
-{#                    </a>#}
-{#                </li>#}
-            </ul>
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-light">
+        <div class="container">
+            {% load static %}
+            <a href="{% url 'vocab:index' %}"><img src="{% static 'images/logo.png' %}" type="image/png"></a>
+            <a class="navbar-brand" href="{% url 'vocab:index' %}">Shiksha</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lecture">
+                            <span>Lecture Tests</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#session">
+                            <span>Session Tests</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+{% endblock %}
 
 {% block body %}
 {% endblock %}

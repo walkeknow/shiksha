@@ -4,33 +4,83 @@
     <title>Test {{ test|capfirst }}</title>
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="{% static 'css/card.css' %}" rel="stylesheet">
+    <link href="{% static 'css/card.css?v=3.1.0' %}" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-light">
+        <div class="container">
+            {% load static %}
+            <a href="{% url 'vocab:index' %}"><img src="{% static 'images/logo.png' %}" type="image/png"></a>
+            <a class="navbar-brand" href="{% url 'vocab:index' %}">Shiksha</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'vocab:index' %}#lecture">
+                            <span>Lecture Tests</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'vocab:index' %}#session">
+                            <span>Session Tests</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 {% endblock %}
 
 {% block body %}
     <div id="lecture"></div>
     <div class="container">
         <div class="container">
-            <div class="effect" onclick="flip()">
-                <div class="card-container">
-                    <div class="card">
-                        <div class="front">
+            <div class="row">
+                <div class="col">
+                    <div class="effect" onclick="flip()">
+                        <div class="card-container">
+                            <div class="card">
+                                <div class="front my-primary">
                             <span class="word-style">
-                                <span id="card-heading">
-                                    HEADING
-                                </span>
+                                HEADING
                             </span>
+                                </div>
+                                <div class="back my-secondary">
+                                    <span class="heading-style">Meaning</span>
+                                    <p class="text-style">
+                                        ["to choose not to do or have something : to refrain deliberately and often with
+                                        an effort of self-denial from an action or practice","to choose not to vote"]}]
+                                    </p>
+                                    <br>
+                                    <span class="heading-style">Synonyms</span>
+                                    <ul>
+                                        {% for word in words %}
+                                            <span class="text-style"><li>{{ word }}</li></span>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="back">
-                            <span class="heading-style">Meaning</span>
-                            <br>
-                            <span class="heading-style">Synonyms</span>
-                            <ul>
-                                {% for word in words %}
-                                    <li>{{ word }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                    </div>
+                </div>
+                <div class="col mt-5 align-self-center">
+                    <div class="row mt-5 justify-content-center">
+                        <button type="button" class="btn butn-lg btn-outline-success py-3">I knew this word</button>
+                    </div>
+                    <div class="row mt-3 justify-content-center">
+                        <button type="button" class="btn butn-lg btn-outline-danger py-3">I didn't know this word
+                        </button>
+                    </div>
+                    <div class="row mt-5 justify-content-center">
+                        {% load static %}
+                        <a href="https://www.dictionary.com/browse/abstain">
+                            <img src="{% static 'images/dictionary.png' %}" alt="dictionary.com meaning"
+                                 class="img-thumbnail">
+                        </a>
                     </div>
                 </div>
             </div>
