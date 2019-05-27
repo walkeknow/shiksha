@@ -71,22 +71,22 @@
                         <div class="card-container">
                             <div class="card">
                                 <div class="front bg-info" style="padding-top: 20%;">
-                            <span id="front-pc" class="word-style">
+                            <span class="word-style">
                                 Loading...
                             </span>
                                 </div>
                                 <div class="back my-secondary">
-                                    <span class="heading-style">Meaning</span>
-                                    <p class="text-style">
+                                    <span class="heading-style back-head">Meaning</span>
+                                    <p class="text-style back-desc">
                                         ["to choose not to do or have something : to refrain deliberately and often with
                                         an effort of self-denial from an action or practice","to choose not to vote"]}]
                                     </p>
                                     <br>
-                                    <span class="heading-style">Synonyms</span>
+                                    <span class="heading-style back-score">Synonyms</span>
                                     <ul>
-{#                                        {% for word in words %}#}
-{#                                            <span class="text-style"><li>{{ word }}</li></span>#}
-{#                                        {% endfor %}#}
+                                        {#                                        {% for word in words %}#}
+                                        {#                                            <span class="text-style"><li>{{ word }}</li></span>#}
+                                        {#                                        {% endfor %}#}
                                     </ul>
                                 </div>
                             </div>
@@ -97,22 +97,22 @@
                         <div class="card-container">
                             <div class="card">
                                 <div class="front bg-info">
-                            <span id="front-mobile" class="word-style">
+                            <span class="word-style">
                                 Loading...
                             </span>
                                 </div>
                                 <div class="back my-secondary">
-                                    <span class="heading-style">Meaning</span>
-                                    <p class="text-style">
+                                    <span class="heading-style back-head">Meaning</span>
+                                    <p class="text-style back-desc">
                                         ["to choose not to do or have something : to refrain deliberately and often with
                                         an effort of self-denial from an action or practice","to choose not to vote"]}]
                                     </p>
                                     <br>
-                                    <span class="heading-style">Synonyms</span>
+                                    <span class="heading-style back-score">Synonyms</span>
                                     <ul>
-{#                                        {% for word in words %}#}
-{#                                            <span class="text-style"><li>{{ word }}</li></span>#}
-{#                                        {% endfor %}#}
+                                        {#                                        {% for word in words %}#}
+                                        {#                                            <span class="text-style"><li>{{ word }}</li></span>#}
+                                        {#                                        {% endfor %}#}
                                     </ul>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                         </button>
                     </div>
                     <div class="row mt-3 justify-content-start">
-                        <button type="button" onclick="this.blur()" class="btn butn-lg btn-danger py-3">I didn't
+                        <button type="button"id="danger"  onclick="this.blur()" class="btn butn-lg btn-danger py-3">I didn't
                             know this word
                         </button>
                     </div>
@@ -165,20 +165,142 @@
         function flip() {
             $('.card').toggleClass('flipped');
         }
-        window.onload = function() {
-            let counter = 1;
+
+        window.onload = function () {
+            function displayResult() {
+                $('.word-style').text("Flip For Score");
+                $('.btn-success').prop('disabled','true');
+                $('.btn-danger').prop('disabled','true');
+                percentage = Math.round(score/words.length * 100);
+                console.log(percentage);
+                if (percentage <= 20) {
+                    $('.back-head').text("Ignominious!");
+                    $('.back-desc').html(
+                        "Seems you gave this test perfunctorily. You need a lot of practice." +
+                        "But it is fine, it is always better to start late than never.<br>Good Luck!");
+                    $('.back-score').text("Score: "+score+"/"+words.length);
+                } else if (percentage > 20 && percentage <= 40) {
+                    $('.back-head').text("Prosaic");
+                    $('.back-desc').html(
+                        "You'll need to practise vocabulary more" +
+                        " religiously or you'll remain a dilettante. Hope you do a lot better" +
+                        " in your next attempt.<br>Good Luck!");
+                    $('.back-score').text("Score: "+score+"/"+words.length);
+                } else if (percentage > 40 && percentage <= 90) {
+                    $('.back-head').text("Approbatory");
+                    $('.back-desc').html(
+                        "Great! If you remain inexorable in your quest to improve your vocabulary," +
+                        " you are bound to reach great heights. Keep trying until you get a perfect" +
+                        "score .<br>Good Luck!"
+                    );
+                    $('.back-score').text("Score: "+score+"/"+words.length);
+                } else {
+                    $('.back-head').text("Stupendous!!");
+                    $('.back-desc').html(
+                        "That is one battle won. Revise the words you learn regularly and you'll win the" +
+                        " war that will ultimately make you a vocabulary cognoscenti.<br>Good Luck!"
+                    );
+                    $('.back-score').text("Score: "+score+"/"+words.length);
+                }
+                $('.btn-info').text('Retake the test').prop('href', '.');
+            }
+            function loadNextWord(word) {
+                $.ajax({
+                    type:'POST',
+                    url:'',
+                    data: {
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+                        'current_word': word,
+                    },
+                    beforeSend: function () {
+                        $('.word-style').text("Loading..");
+                        $('.btn-success').prop('disabled','true');
+                        $('.btn-danger').prop('disabled','true');
+                        $('.btn-info').addClass('disabled')
+                    },
+                    success: function (context) {
+                        let meanings = context.meanings;
+                        let synonyms = context.synonyms;
+                        console.log(meanings);
+                        $('.btn-success').removeAttr('disabled');
+                        $('.btn-danger').removeAttr('disabled');
+                        $('.btn-info').removeClass('disabled');
+                        word_counter += 1;
+                        $('.word-style').text(word_counter.toString() + "." + words[word_counter - 1]);
+                        $('.back-desc').html(meanings);
+                        $('.back-score').empty();
+                        var list = document.createElement('ul');
+                        for (var i = 0; i < synonyms.length; i++) {
+                            // Create the list item:
+                            var item = document.createElement('li');
+
+                            // Set its contents:
+                            item.appendChild(document.createTextNode(synonyms[i]));
+
+                            // Add it to the list:
+                            list.appendChild(item);
+                        }
+                        $('.back-score').append(list)
+                    },
+                    error: function (jqXHR, exception) {
+                        var msg = '';
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        console.log(msg);
+                        alert("Error "+msg+" Please Try Again Later!")
+                    },
+                });
+            }
+            let word_counter = 1;
+            let score = 0;
             let words = {{ words|safe }};
-            console.log(words[0]);
-            $('#front-pc').text(counter.toString()+"."+words[0]);
-            $('#front-mobile').text(counter.toString()+"."+words[0]);
+            let meanings = "{{ first_meanings }}";
+            let synonyms = {{ first_synonyms|safe }};
+            console.log(words);
+            console.log(words.length);
+            $('.word-style').text(word_counter.toString() + "." + words[0]);
+            $('.back-desc').html(meanings);
+            var list = document.createElement('ul');
+            for (var i = 0; i < synonyms.length; i++) {
+                // Create the list item:
+                var item = document.createElement('li');
+
+                // Set its contents:
+                item.appendChild(document.createTextNode(synonyms[i]));
+
+                // Add it to the list:
+                list.appendChild(item);
+            };
+            $('.back-score').append(list);
             $('.btn-success').click(function () {
-                $('#front-pc').text("new");
-                $('#front-mobile').text(words[1]);
+                score += 1;
+                if (word_counter < words.length) {
+                    loadNextWord(words[word_counter])
+                } else {
+                    displayResult(words[word_counter - 1])
+                }
             });
-            $('.btn-success').click(function () {
-                $('#front-pc').text("new");
-                $('#front-mobile').text(words[1]);
-            })
+            $('.btn-danger').click(function () {
+                if (word_counter < words.length) {
+                    loadNextWord(words[word_counter])
+                } else {
+                    displayResult(words[word_counter - 1])
+                }
+            });
+
         }
     </script>
 {% endblock %}
