@@ -15,7 +15,7 @@ function execute(words, synonyms, meanings, csfr_token) {
             $('.word-style').text("Flip For Score!");
             $('.btn-success').prop('disabled', 'true');
             $('.btn-danger').prop('disabled', 'true');
-            var delayInMilliseconds = 1500;
+            var delayInMilliseconds = 1000;
             setTimeout(function () {
                 percentage = Math.round(score / words.length * 100);
                 console.log(percentage);

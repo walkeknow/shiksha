@@ -49,6 +49,8 @@ def test(request, test_id):
     lower_word_list = word_file.read().splitlines()
     word_list = [word.capitalize() for word in lower_word_list]
     random.shuffle(word_list)
+    if test_id[0] == 'b':
+        word_list = word_list[:2]
     print(word_list)
     word = word_list[0]
     print(word)
