@@ -50,7 +50,7 @@ def test(request, test_id):
     word_list = [word.capitalize() for word in lower_word_list]
     random.shuffle(word_list)
     if test_id[0] == 'b':
-        word_list = word_list[:2]
+        word_list = word_list[:10]
     print(word_list)
     word = word_list[0]
     print(word)
