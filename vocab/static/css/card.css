@@ -59,7 +59,7 @@
     padding: 30px;
     color: black;
     border: 5px solid black;
-    line-height: 10%;
+    line-height: 12%;
     -webkit-transform: rotateY( 180deg );
     -moz-transform: rotateY( 180deg );
     -o-transform: rotateY( 180deg );
@@ -85,7 +85,7 @@
 
 .heading-style {
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
-    font-size: 0.12em;
+    font-size: 0.14em;
     font-weight: bold;
 }
 
@@ -103,12 +103,19 @@
 .text-style {
     padding-top: 20px;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
-    font-size: 0.09em;
+    font-size: 0.10em;
     font-weight: bold;
-    text-align: left;
+    text-align: justify-all;
 }
+
+.list-style {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-size: 0.10em;
+    font-weight: bold;
+}
+
 ul {
-    margin-left: 50px;
+    margin-left: 40px;
     padding-top: 20px;
 }
 ul li {
@@ -122,4 +129,9 @@ ul li {
 
 .marg-top {
     margin-top: 50%;
+}
+
+.back-score {
+    display: inline-block;
+    margin-top: -50%;
 }

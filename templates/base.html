@@ -20,6 +20,14 @@
     {% load static %}
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon"/>
 
+
+    {% load static %}
+    <script defer src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    {% load static %}
+    <script defer  src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+
     {% block head %}
         <title>Shiksha Vocabulary</title>
     {% endblock %}
@@ -88,9 +96,6 @@
         });
     });
 </script>
-{% load static %}
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
 </body>
 
 </html>

@@ -45,7 +45,7 @@ def test(request, test_id):
             "synonyms": synonyms
         }
         return JsonResponse(context)
-    word_file = open(os.path.join(settings.BASE_DIR, 'staticfiles/' + 'temp.txt'))
+    word_file = open(os.path.join(settings.BASE_DIR, 'staticfiles/' + test_id + '.txt'))
     lower_word_list = word_file.read().splitlines()
     word_list = [word.capitalize() for word in lower_word_list]
     random.shuffle(word_list)
