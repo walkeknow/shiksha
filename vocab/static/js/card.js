@@ -13,11 +13,12 @@ function execute(words, synonyms, meanings, csfr_token) {
                 flip();
             }
             $('.word-style').text("Flip For Score!");
-            $('.back-score').css('-webkit-margin-start', '38px');
+            $('.back-score').css('-webkit-margin-start', '75px');
             $('.btn-success').prop('disabled', 'true');
             $('.btn-danger').prop('disabled', 'true');
             var delayInMilliseconds = 1000;
             setTimeout(function () {
+                $('.back-score').css('-webkit-margin-before', '100px');
                 percentage = Math.round(score / words.length * 100);
                 console.log(percentage);
                 $('.back-score-list').empty();
