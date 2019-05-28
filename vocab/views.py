@@ -72,6 +72,7 @@ def test(request, test_id):
     })
     print(syn_url)
     syn_json = requests.get(syn_url).json()
+
     if isinstance(syn_json[0], str):
         word = syn_json[0]
         syn_url = syn_api + word + '?' + urllib.parse.urlencode({
