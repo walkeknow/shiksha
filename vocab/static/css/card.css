@@ -1,6 +1,4 @@
-.effect {
-    /*margin-top: 20px;*/
-}
+
 .card-container {
     width: 100%;
     height: 100%;
@@ -133,5 +131,9 @@ ul li {
 
 .back-score {
     display: inline-block;
-    margin-top: -50%;
+    -webkit-margin-start: 61px;
+}
+.back-head {
+    display: inline-block;
+    -webkit-margin-start: -5px;
 }
