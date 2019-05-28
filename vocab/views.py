@@ -30,9 +30,20 @@ def test(request, test_id):
         # json = requests.get(url).json()
         syn_json = requests.get(syn_url).json()
         # definitions = json[0]['shortdef']
-        definitions = syn_json[0]['shortdef']
-        definitions = [word.capitalize() for word in definitions]
-        definitions = ";".join(definitions)
+        if isinstance(syn_json[0], str):
+            word = syn_json[0]
+            syn_url = syn_api + word + '?' + urllib.parse.urlencode({
+                'key': syn_key
+            })
+            syn_json = requests.get(syn_url).json()
+            definitions = syn_json[0]['shortdef']
+            definitions = [word.capitalize() for word in definitions]
+            definitions = ";".join(definitions)
+        else:
+            definitions = syn_json[0]['shortdef']
+            definitions = [word.capitalize() for word in definitions]
+            definitions = ";".join(definitions)
+
         synonyms = ['No Synonyms Found']
         if syn_json[0]['meta']['syns'][0] is not None:
             all_synonyms = syn_json[0]['meta']['syns'][0]
@@ -61,9 +72,20 @@ def test(request, test_id):
     })
     print(syn_url)
     syn_json = requests.get(syn_url).json()
-    definitions = syn_json[0]['shortdef']
-    definitions = [word.capitalize() for word in definitions]
-    definitions = ";".join(definitions)
+    if isinstance(syn_json[0], str):
+        word = syn_json[0]
+        syn_url = syn_api + word + '?' + urllib.parse.urlencode({
+            'key': syn_key
+        })
+        syn_json = requests.get(syn_url).json()
+        definitions = syn_json[0]['shortdef']
+        definitions = [word.capitalize() for word in definitions]
+        definitions = ";".join(definitions)
+    else:
+        definitions = syn_json[0]['shortdef']
+        definitions = [word.capitalize() for word in definitions]
+        definitions = ";".join(definitions)
+
     synonyms = ['No Synonyms Found']
     if syn_json[0]['meta']['syns'][0] is not None:
         all_synonyms = syn_json[0]['meta']['syns'][0]

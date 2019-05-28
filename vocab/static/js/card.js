@@ -115,7 +115,7 @@ function execute(words, synonyms, meanings, csfr_token) {
                         msg = 'Uncaught Error\n' + jqXHR.responseText;
                     }
                     console.log(msg);
-                    alert("msg"+ " processing the word " + word.toLowerCase() +". Please try again later!")
+                    alert(msg+ " processing the word " + word.toLowerCase() +". Please try again later!")
                 },
             });
         }
