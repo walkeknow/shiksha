@@ -65,7 +65,8 @@ function execute(words, synonyms, meanings, csfr_token) {
                     'current_word': word,
                 },
                 beforeSend: function () {
-                    $('.word-style').html("<br><br><br>" + "Loading..");
+                    $('#word-name').html("Loading..");
+                    $('#word-name-mobile').html("Loading..");
                     $('.btn-success').prop('disabled', 'true');
                     $('.btn-danger').prop('disabled', 'true');
                     $('.btn-info').addClass('disabled');
@@ -83,7 +84,9 @@ function execute(words, synonyms, meanings, csfr_token) {
                     $('.btn-info').prop('href', 'https://www.dictionary.com/browse/' + word + '#wordOrigin');
                     word_counter += 1;
                     $('.word-style').html("<span style='color: #8e3d00'>" + word_counter.toString() + "</span>"
-                        + "/" + words.length + "<br><br><br>" + words[word_counter - 1]);
+                        + "/" + words.length);
+                    $('#word-name').html(words[word_counter - 1]);
+                    $('#word-name-mobile').html(words[word_counter - 1]);
                     $('.back-desc').html(meanings);
                     $('.back-score-list').empty();
                     var list = document.createElement('ul');
@@ -127,7 +130,9 @@ function execute(words, synonyms, meanings, csfr_token) {
         console.log(words);
         console.log(words.length);
         $('.word-style').html("<span style='color: #8e3d00'>" + word_counter.toString() + "</span>"
-            + "/" + words.length + "<br><br><br>" + words[0]);
+            + "/" + words.length);
+        $('#word-name').html(words[0]);
+        $('#word-name-mobile').html(words[0]);
         $('.back-desc').html(meanings);
         var list = document.createElement('ul');
         for (var i = 0; i < synonyms.length; i++) {

@@ -95,6 +95,18 @@
     margin-top: 50%;
 }
 
+#word-name {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-size: 0.2em;
+    font-weight: bold;
+    margin-top: 50%;
+}
+#word-name-mobile {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-size: 0.2em;
+    font-weight: bold;
+}
+
 .effect {
     height: 500px;
     width: 300px;
@@ -137,3 +149,5 @@ ul li {
 .back-head {
     display: inline-block;
 }
+
+
