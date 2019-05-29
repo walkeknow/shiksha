@@ -179,10 +179,21 @@ function execute(words, synonyms, meanings, csfr_token) {
                     console.log(timer);
                 }
             } else {
-                if (word_counter < words.length) {
-                    loadNextWord(words[word_counter])
-                } else {
-                    displayResult()
+                var timer = 9;
+                setTimeout(countDown,1000);
+                function countDown(){
+                    timer--;
+                    if(timer > 0){
+                        setTimeout(countDown,1000);
+                    } else {
+                        if (word_counter < words.length) {
+                            loadNextWord(words[word_counter])
+                        } else {
+                            displayResult()
+                        }
+                    }
+                    $('.word-style').html("Next word in "+timer);
+                    console.log(timer);
                 }
             }
         });
