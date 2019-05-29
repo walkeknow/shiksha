@@ -22,11 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/home/walkeknow/IdeaProjects/Shiksha-1/secret_key.txt') as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = '&3kg^=@sc3xrk((yzu%@5rp*qpn^2=)ote#l6!4do$(=)8vs)&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -124,7 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-DISABLE_COLLECTSTATIC=1
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
