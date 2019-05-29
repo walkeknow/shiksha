@@ -159,10 +159,31 @@ function execute(words, synonyms, meanings, csfr_token) {
             }
         });
         $('.btn-danger').click(function () {
-            if (word_counter < words.length) {
-                loadNextWord(words[word_counter])
+            if (!flipped) {
+                flip();
+                console.log("working");
+                var timer = 5;
+                setTimeout(countDown,1000);
+                function countDown(){
+                    timer--;
+                    if(timer > 0){
+                        setTimeout(countDown,1000);
+                    } else {
+                        if (word_counter < words.length) {
+                            loadNextWord(words[word_counter])
+                        } else {
+                            displayResult()
+                        }
+                    }
+                    $('.word-style').html("Next word in "+timer);
+                    console.log(timer);
+                }
             } else {
-                displayResult()
+                if (word_counter < words.length) {
+                    loadNextWord(words[word_counter])
+                } else {
+                    displayResult()
+                }
             }
         });
     }
