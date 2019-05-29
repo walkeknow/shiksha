@@ -159,6 +159,8 @@ function execute(words, synonyms, meanings, csfr_token) {
             }
         });
         $('.btn-danger').click(function () {
+            $('.btn-success').prop('disabled', 'true');
+            $('.btn-danger').prop('disabled', 'true');
             if (!flipped) {
                 flip();
                 console.log("working");
