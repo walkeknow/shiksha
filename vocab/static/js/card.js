@@ -13,7 +13,9 @@ function execute(words, synonyms, meanings, csfr_token) {
             if (flipped) {
                 flip();
             }
-            $('.word-style').html("<br><br><br>Flip For Score!");
+            $('.word-style').empty();
+            $('#word-name').html("Flip For Score!");
+            $('#word-name-mobile').html("Flip For Score!");
             $('.back-score').css('-webkit-margin-start', '75px');
             $('.btn-success').prop('disabled', 'true');
             $('.btn-danger').prop('disabled', 'true');
