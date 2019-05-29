@@ -139,6 +139,7 @@ function execute(words, synonyms, meanings, csfr_token) {
         }
         $('.back-score-list').append(list);
         $('.btn-info').prop('href', 'https://www.dictionary.com/browse/' + words[0] + '#wordOrigin');
+        $('.img-info').prop('href', 'https://www.dictionary.com/browse/' + words[0] + '#wordOrigin');
         $('.btn-success').click(function () {
             score += 1;
             if (word_counter < words.length) {
