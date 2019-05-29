@@ -162,7 +162,7 @@ function execute(words, synonyms, meanings, csfr_token) {
             if (!flipped) {
                 flip();
                 console.log("working");
-                var timer = 10;
+                var timer = 9;
                 setTimeout(countDown,1000);
                 function countDown(){
                     timer--;
