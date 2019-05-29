@@ -84,6 +84,7 @@ function execute(words, synonyms, meanings, csfr_token) {
                     $('.btn-danger').removeAttr('disabled');
                     $('.btn-info').removeClass('disabled');
                     $('.btn-info').prop('href', 'https://www.dictionary.com/browse/' + word + '#wordOrigin');
+                    $('.img-info').prop('href', 'https://www.dictionary.com/browse/' + word + '#wordOrigin');
                     word_counter += 1;
                     $('.word-style').html("<span style='color: #8e3d00'>" + word_counter.toString() + "</span>"
                         + "/" + words.length);
