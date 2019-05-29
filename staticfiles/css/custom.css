@@ -1,0 +1,81 @@
+/*!
+ * Start Bootstrap - Small Business (https://startbootstrap.com/template-overviews/small-business)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-small-business/blob/master/LICENSE)
+ */
+body {
+  padding-top: 60px;
+  height: 100%;
+  min-height: 100%;
+}
+
+.navbar-border {
+  border-bottom: 1px white;
+}
+
+.card {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.card:hover {
+  transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -webkit-transition: ease-in 0.1s;
+  -moz-transition: ease-in 0.1s;
+  -o-transition: ease-in 0.1s;
+  transition: ease-in 0.1s;
+  cursor: pointer;
+}
+.card:active {
+  filter: brightness(50%);
+  -webkit-filter: brightness(50%);
+}
+
+.navbar-nav > li {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.navbar-nav li:hover a span{
+  color: white;
+}
+
+a {
+  outline: none;
+}
+
+.container img {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+#lecture {
+  padding: 50px;
+}
+
+.navbar-brand {
+  margin-left: 10px;
+}
+
+.my-primary {
+  background-color: #037c8f;
+}
+
+.my-secondary {
+  background-color: #ee883e;
+}
+
+.my-secondary-font {
+  color: #ee5700;
+}
+
+footer {
+  clear: both;
+  position: relative;
+  margin-top: 10%;
+}

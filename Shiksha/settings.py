@@ -28,8 +28,6 @@ with open('/home/walkeknow/IdeaProjects/Shiksha-1/secret_key.txt') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-SECURE_HSTS_SECONDS = 3600
-
 ALLOWED_HOSTS = []
 
 
@@ -126,6 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+DISABLE_COLLECTSTATIC=1
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
