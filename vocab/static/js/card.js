@@ -1,4 +1,5 @@
 let flipped = false;
+
 function flip() {
     $('.card').toggleClass('flipped');
     flipped = !flipped;
@@ -12,7 +13,7 @@ function execute(words, synonyms, meanings, csfr_token) {
             if (flipped) {
                 flip();
             }
-            $('.word-style').text("Flip For Score!");
+            $('.word-style').html("<br><br><br>Flip For Score!");
             $('.back-score').css('-webkit-margin-start', '75px');
             $('.btn-success').prop('disabled', 'true');
             $('.btn-danger').prop('disabled', 'true');
@@ -64,7 +65,7 @@ function execute(words, synonyms, meanings, csfr_token) {
                     'current_word': word,
                 },
                 beforeSend: function () {
-                    $('.word-style').text("Loading..");
+                    $('.word-style').html("<br><br><br>" + "Loading..");
                     $('.btn-success').prop('disabled', 'true');
                     $('.btn-danger').prop('disabled', 'true');
                     $('.btn-info').addClass('disabled');
@@ -81,7 +82,8 @@ function execute(words, synonyms, meanings, csfr_token) {
                     $('.btn-info').removeClass('disabled');
                     $('.btn-info').prop('href', 'https://www.dictionary.com/browse/' + word + '#wordOrigin');
                     word_counter += 1;
-                    $('.word-style').text(word_counter.toString() + "." + words[word_counter - 1]);
+                    $('.word-style').html("<span style='color: #8e3d00'>" + word_counter.toString() + "</span>"
+                        + "/" + words.length + "<br><br><br>" + words[word_counter - 1]);
                     $('.back-desc').html(meanings);
                     $('.back-score-list').empty();
                     var list = document.createElement('ul');
@@ -115,7 +117,7 @@ function execute(words, synonyms, meanings, csfr_token) {
                         msg = 'Uncaught Error\n' + jqXHR.responseText;
                     }
                     console.log(msg);
-                    alert(msg+ " processing the word " + word.toLowerCase() +". Please try again later!")
+                    alert(msg + " processing the word " + word.toLowerCase() + ". Please try again later!")
                 },
             });
         }
@@ -124,7 +126,8 @@ function execute(words, synonyms, meanings, csfr_token) {
         let score = 0;
         console.log(words);
         console.log(words.length);
-        $('.word-style').text(word_counter.toString() + "." + words[0]);
+        $('.word-style').html("<span style='color: #8e3d00'>" + word_counter.toString() + "</span>"
+            + "/" + words.length + "<br><br><br>" + words[0]);
         $('.back-desc').html(meanings);
         var list = document.createElement('ul');
         for (var i = 0; i < synonyms.length; i++) {

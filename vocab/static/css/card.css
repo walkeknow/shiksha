@@ -42,6 +42,7 @@
 
 .card .front {
     padding-top: 15%;
+    line-height: 5px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: black;
     height: inherit;
