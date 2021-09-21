@@ -1,3 +1,3 @@
 # Shiksha
 
-A Django Website that can be used to improve Vocabulary. Helpful for students preparing for the GRE.
+A Django Web app to help students improve their vocabulary while preparing for the GRE
